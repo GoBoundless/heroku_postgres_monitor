@@ -23,4 +23,4 @@ PLATFORMS
 
 DEPENDENCIES
   newrelic_plugin!
-  newrelic_postgres_plugin (= 0.1.2)
+  newrelic_postgres_plugin (~> 0.1.2)

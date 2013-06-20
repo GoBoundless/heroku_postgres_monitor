@@ -32,3 +32,7 @@ git push heroku master
 ```
 
 Done! You should start to see data coming into your NewRelic dashboard as soon as the deploy is finished.
+
+Notes
+------------------------
+For the time being we are using a fork of the newrelic_plugin gem that enables ERB parsing of the config file. We've submitted a pull request and will go back to relying on the standard gem distribution if/when it is accepted.
