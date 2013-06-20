@@ -1,0 +1,26 @@
+# Please make sure to update the license_key information with the license key for your New Relic
+# account.
+#
+#
+newrelic:
+  #
+  # Update with your New Relic account license key:
+  #
+  license_key: '1dcf8084977f11fa60859d145c4f6f708300c6f4'
+  #
+  # Set to '1' for verbose output, remove for normal output.
+  # All output goes to stdout/stderr.
+  #
+  # verbose: 1
+#
+# Agent Configuration:
+#
+agents:
+  # this is where configuration for agents belongs
+  postgres:
+    host: 'ec2-54-225-116-223.compute-1.amazonaws.com'
+    port: 5432
+    user: 'u5pkejqhcfjgam'
+    password: 'pbaf4i19uannagfcjiokijemkrl'
+    dbname: 'd22n3l25ik7112'
+    sslmode: 'require' #(disable|allow|prefer|require)
