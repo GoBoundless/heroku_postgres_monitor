@@ -13,7 +13,7 @@ GEM
       multipart-post (~> 1.1)
     json (1.8.0)
     multipart-post (1.2.0)
-    newrelic_postgres_plugin (0.1.2)
+    newrelic_postgres_plugin (0.1.4)
       newrelic_plugin (>= 0.2.11)
       pg (>= 0.15.1)
     pg (0.15.1)
@@ -23,4 +23,4 @@ PLATFORMS
 
 DEPENDENCIES
   newrelic_plugin!
-  newrelic_postgres_plugin (~> 0.1.2)
+  newrelic_postgres_plugin (~> 0.1.4)
