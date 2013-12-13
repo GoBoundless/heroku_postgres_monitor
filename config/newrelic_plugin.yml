@@ -6,13 +6,13 @@ newrelic:
   license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
   verbose: 1
 
-agents:
-  <% agents do |agent| %>
-    <%= agent.color %>:
-      host: <%= agent.host %>
-      port: <%= agent.port %>
-      user: <%= agent.user %>
-      password: <%= agent.password %>
-      dbname: <%= agent.name %>
-      sslmode: 'require'
-<% end %>
+  agents:
+    <% agents do |agent| %>
+      <%= agent.color %>:
+        host: <%= agent.host %>
+        port: <%= agent.port %>
+        user: <%= agent.user %>
+        password: <%= agent.password %>
+        dbname: <%= agent.name %>
+        sslmode: 'require'
+  <% end %>
