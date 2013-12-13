@@ -14,6 +14,6 @@ agents:
         port: <%= agent.port %>
         user: <%= agent.user %>
         password: <%= agent.password %>
-        dbname: <%= agent.name %>
+        dbname: <%= agent.dbname %>
         sslmode: 'require'
 <% end %>
