@@ -24,8 +24,8 @@ module ConfigHelper
       agent.port = uri.port
       agent.user = uri.user
       agent.password = uri.password
-      agent.dbname = attributes[:name]
-      agent.name = attributes[:name]
+      agent.dbname = attributes[:name] || color
+      agent.name = attributes[:name] || color
       yield agent
     end
   end

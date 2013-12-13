@@ -7,12 +7,13 @@ newrelic:
   verbose: 1
 
   agents:
-    <% agents do |agent| %>
-      <%= agent.color %>:
-        host: <%= agent.host %>
-        port: <%= agent.port %>
-        user: <%= agent.user %>
-        password: <%= agent.password %>
-        dbname: <%= agent.name %>
-        sslmode: 'require'
+    postgres:
+      <% agents do |agent| %>
+        -
+          host: <%= agent.host %>
+          port: <%= agent.port %>
+          user: <%= agent.user %>
+          password: <%= agent.password %>
+          dbname: <%= agent.name %>
+          sslmode: 'require'
   <% end %>
