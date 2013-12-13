@@ -6,14 +6,14 @@ newrelic:
   license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
   verbose: 1
 
-  agents:
-    postgres:
-      <% agents do |agent| %>
-        -
-          host: <%= agent.host %>
-          port: <%= agent.port %>
-          user: <%= agent.user %>
-          password: <%= agent.password %>
-          dbname: <%= agent.name %>
-          sslmode: 'require'
-  <% end %>
+agents:
+  postgres:
+    <% agents do |agent| %>
+      -
+        host: <%= agent.host %>
+        port: <%= agent.port %>
+        user: <%= agent.user %>
+        password: <%= agent.password %>
+        dbname: <%= agent.name %>
+        sslmode: 'require'
+<% end %>
