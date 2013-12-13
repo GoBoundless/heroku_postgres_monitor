@@ -1,32 +1,18 @@
-# Please make sure to update the license_key information with the license key for your New Relic
-# account.
-#
-#
-newrelic:
-  #
-  # Update with your New Relic account license key:
-  #
-  license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
-  #
-  # Set to '1' for verbose output, remove for normal output.
-  # All output goes to stdout/stderr.
-  #
-  # verbose: 1
-#
-# Agent Configuration:
-#
+<% $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), 'lib')) %>
+<% require 'config_helper' %>
+<% include ConfigHelper %>
 
-<%
-  require 'uri'
-  uri = URI.parse(ENV['DATABASE_URL'])
-%>
+newrelic:
+  license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
+  verbose: 1
 
 agents:
-  # this is where configuration for agents belongs
-  postgres:
-    host: <%= uri.host %>
-    port: <%= uri.port %>
-    user: <%= uri.user %>
-    password: <%= uri.password %>
-    dbname: <%= uri.path.split('/')[1] %>
-    sslmode: 'require'
+  <% agents do |agent| %>
+    <%= agent.color %>:
+      host: <%= agent.host %>
+      port: <%= agent.port %>
+      user: <%= agent.user %>
+      password: <%= agent.password %>
+      dbname: <%= agent.name %>
+      sslmode: 'require'
+<% end %>
