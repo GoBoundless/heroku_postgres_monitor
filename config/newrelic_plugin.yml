@@ -9,7 +9,7 @@ agents:
   postgres:
     <% postgres_config.each do |agent| %>
       -
-        name: <%= agent[:name] %>
+        label: <%= agent[:label] %>
         host: <%= agent[:host] %>
         port: <%= agent[:port] %>
         user: <%= agent[:user] %>

@@ -10,10 +10,10 @@ module ConfigHelper
         uri = URI.parse(value)
         next unless uri.respond_to?(:scheme) && uri.scheme == "postgres"
         if databases.has_key? value
-          databases[value][:names] << key
+          databases[value][:labels] << key
         else
           databases[value] = {
-            names: [key],
+            labels: [key],
             host: uri.host,
             port: uri.port,
             user: uri.user,
@@ -27,7 +27,7 @@ module ConfigHelper
     end
 
     databases.each do |uri,hash|
-      hash[:name] = hash[:names].map { |s| s.gsub /_URL/, '' }.sort_by(&:length).join(", ")
+      hash[:label] = hash[:labels].map { |s| s.gsub /_URL/, '' }.sort_by(&:length).join(", ")
     end
 
     databases.values
