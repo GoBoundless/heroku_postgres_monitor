@@ -1,33 +1,40 @@
 require 'uri'
-require 'ostruct'
 
 module ConfigHelper
 
-  ENV_REGEXP = /^HEROKU_POSTGRESQL_(?<color>[A-Z]+)_(?<attribute>NAME|URL)/
-
-  def databases
+  def self.postgres
     databases = {}
-    ENV.each do |key,value|
-      match = ENV_REGEXP.match(key) or next
-      databases[match[:color].downcase.to_sym] ||= {}
-      databases[match[:color].downcase.to_sym][match[:attribute].downcase.to_sym] = value
+
+    ENV.to_hash.each do |key,value|
+      begin
+        uri = URI.parse(value)
+        next unless uri.respond_to?(:scheme) && uri.scheme == "postgres"
+        if databases.has_key? value
+          databases[value][:names] << key
+        else
+          databases[value] = {
+            names: [key],
+            host: uri.host,
+            port: uri.port,
+            user: uri.user,
+            password: uri.password,
+            dbname: uri.path.split('/')[1],
+            sslmode: 'require'
+          }
+        end
+      rescue URI::InvalidURIError
+      end
     end
-    databases
+
+    databases.each do |uri,hash|
+      hash[:name] = hash[:names].map { |s| s.gsub /_URL/, '' }.sort_by(&:length).join(", ")
+    end
+
+    databases.values
   end
 
-  def agents
-    databases.each do |color,attributes|
-      uri = URI.parse(attributes[:url])
-      agent = OpenStruct.new
-      agent.color = color
-      agent.host = uri.host
-      agent.port = uri.port
-      agent.user = uri.user
-      agent.password = uri.password
-      agent.dbname = uri.path.split('/')[1]
-      agent.name = attributes[:name] || color
-      yield agent
-    end
-  end
+end
 
+class Object
+  def postgres_config ; ConfigHelper.postgres ; end
 end

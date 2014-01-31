@@ -22,7 +22,7 @@ heroku config:set NEW_RELIC_LICENSE_KEY="your license key"
 
 Alternatively, if you're monitoring a different heroku app, you can use this command to copy the config over:
 ```
-heroku config:set $( heroku config --shell --app other-app-name | egrep '^(DATABASE_URL|NEW_RELIC_LICENSE_KEY)=' )
+heroku config:set $(heroku config --shell --app other-app-name | egrep '^(DATABASE_URL|HEROKU_POSTGRES|NEW_RELIC_LICENSE_KEY)=' )
 ```
 
 #### Step 3:

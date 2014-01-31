@@ -1,6 +1,5 @@
 <% $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), 'lib')) %>
 <% require 'config_helper' %>
-<% include ConfigHelper %>
 
 newrelic:
   license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
@@ -8,12 +7,13 @@ newrelic:
 
 agents:
   postgres:
-    <% agents do |agent| %>
+    <% postgres_config.each do |agent| %>
       -
-        host: <%= agent.host %>
-        port: <%= agent.port %>
-        user: <%= agent.user %>
-        password: <%= agent.password %>
-        dbname: <%= agent.dbname %>
+        name: <%= agent[:name] %>
+        host: <%= agent[:host] %>
+        port: <%= agent[:port] %>
+        user: <%= agent[:user] %>
+        password: <%= agent[:password] %>
+        dbname: <%= agent[:dbname] %>
         sslmode: 'require'
-<% end %>
+    <% end %>
