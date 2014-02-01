@@ -19,7 +19,7 @@ heroku create <new app name>
 Setup the Heroku config variables needed to run the plugin:
 
 ```
-heroku config:set $(heroku config --shell --app other-app-name | egrep '^(postgres://|NEW_RELIC_LICENSE_KEY)' )
+heroku config:set $(heroku config --shell --app other-app-name | egrep 'NEW_RELIC_LICENSE_KEY|postgres://' )
 ```
 
 Feel free to add as many Heroku Postgres instance URLs as you wish.
