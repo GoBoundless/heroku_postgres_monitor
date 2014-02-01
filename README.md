@@ -1,7 +1,7 @@
 Heroku Postgres Monitor
 ========================
 
-A simple Heroku app to run the newrelic_postgres_plugin to send metrics from a Postgres DB to the NewRelic Platform.
+A simple Heroku app wrapper for `newrelic_postgres_plugin`. Send metrics from your Heroku Postgres instances to the NewRelic Platform.
 
 ![Screenshot](https://raw.github.com/GoBoundless/heroku_postgres_monitor/master/screenshot.png "Screenshot")
 
@@ -13,10 +13,10 @@ Clone this repo and setup a new heroku application:
 ```
 git clone git@github.com:GoBoundless/heroku_postgres_monitor.git
 cd heroku_postgres_monitor
-heroku create <new app name>
+heroku create
 ```
 #### Step 2:
-Setup the Heroku config variables needed to run the plugin:
+Copy config vars from your app into the monitor app:
 
 ```
 heroku config:set $(heroku config --shell --app other-app-name | egrep 'NEW_RELIC_LICENSE_KEY|postgres://' )
