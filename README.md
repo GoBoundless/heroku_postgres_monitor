@@ -28,6 +28,7 @@ Feel free to add as many Heroku Postgres instance URLs as you wish.
 Deploy to Heroku
 ```
 git push heroku master
+heroku ps:scale worker=1 web=0
 ```
 
 Done! You should start to see data coming into your NewRelic dashboard as soon as the deploy is finished.
