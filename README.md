@@ -3,6 +3,8 @@ Heroku Postgres Monitor
 
 A simple Heroku app to run the newrelic_postgres_plugin to send metrics from a Postgres DB to the NewRelic Platform.
 
+![Screenshot](https://raw.github.com/GoBoundless/heroku_postgres_monitor/master/screenshot.png "Screenshot")
+
 Usage
 ------------------------
 
