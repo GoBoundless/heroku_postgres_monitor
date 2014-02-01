@@ -1,7 +1,7 @@
 Heroku Postgres Monitor
 ========================
 
-A simple Heroku app wrapper for `newrelic_postgres_plugin`. Send metrics from your Heroku Postgres instances to the NewRelic Platform.
+A simple Heroku app wrapper for [newrelic_postgres_plugin](https://github.com/GoBoundless/newrelic_postgres_plugin). Send metrics from your Heroku Postgres instances to the NewRelic Platform.
 
 ![Screenshot](https://raw.github.com/GoBoundless/heroku_postgres_monitor/master/screenshot.png "Screenshot")
 
