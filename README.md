@@ -22,7 +22,7 @@ Copy config vars from your app into the monitor app:
 heroku config:set $(heroku config --shell --app other-app-name | egrep 'NEW_RELIC_LICENSE_KEY|postgres://')
 ```
 
-Feel free to add as many Heroku Postgres instance URLs as you wish.
+Feel free to add as many Heroku Postgres instance URLs as you wish. You will need to run this command again after scaling or adding any databases. 
 
 #### Step 3:
 Deploy to Heroku
