@@ -27,7 +27,10 @@ module ConfigHelper
     end
 
     databases.each do |uri,hash|
-      hash[:label] = hash[:labels].map { |s| s.gsub /_URL/, '' }.sort_by(&:length).join(", ")
+      hash[:label] = hash[:labels]
+        .sort_by(&:length)
+        .map { |s| s.gsub /(_URL|HEROKU_POSTGRESQL_|_DATABASE)/, '' }
+        .join(", ")
     end
 
     databases.values
