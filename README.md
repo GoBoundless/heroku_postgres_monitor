@@ -22,13 +22,13 @@ Copy config vars from your app into the monitor app:
 heroku config:set $(heroku config --shell --app other-app-name | egrep 'NEW_RELIC_LICENSE_KEY|postgres://')
 ```
 
-Feel free to add as many Heroku Postgres instance URLs as you wish. You will need to run this command again after scaling or adding any databases. 
+Feel free to add as many Heroku Postgres instance URLs as you wish. You will need to run this command again after scaling or adding any databases.
 
 #### Step 3:
 Deploy to Heroku
 ```
 git push heroku master
-heroku ps:scale worker=1 web=0
+heroku ps:scale worker=1
 ```
 
 Done! You should start to see data coming into your NewRelic dashboard as soon as the deploy is finished.
